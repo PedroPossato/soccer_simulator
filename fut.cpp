@@ -3,6 +3,7 @@
 #include<ctime>
 #include<unistd.h>
 #include<vector>
+#define _DEBUG 0
 
 using namespace std;
 
@@ -124,10 +125,14 @@ int main(int argc, char const *argv[]) {
       // Cria array de times e forcas pra cada time
       string nome[] = {"Flamengo", "Vasco", "Corinthians", "Bahia", "Palmeiras", "Botafogo", "Fluminense", "Cruzeiro", "Sao Paulo", "Atl Mineiro",
                     "Atl Paranaense", "Santos", "Gremio", "Vitoria", "Ponte Preta", "Coritiba", "Sport", "Avai", "Atl Goianeense", "Chapecoense",
-                    "Brasil","Argentina","Alemanha","Espanha","Franca","Belgica","Holanda","Italia","Barcelona","Real Madrid","Bayern","PSG"};
+                    "Brasil","Argentina","Alemanha","Espanha","Franca","Belgica","Russia","Arabia Saudita","Egito","Uruguai","Portugal","Marrocos",
+                    "Ira","Australia","Peru","Dinamarca","Islandia","Croacia","Nigeria","Suica","Costa Rica","Servia","Mexico","Suecia","Coreia do Sul",
+                    "Panama","Tunisia","Inglaterra","Polonia","Colombia","Senegal","Japao"};
       int val[] = {74,75,75, 71,72,72, 75,74,75, 70,71,70, 74,72,73, 73,73,72, 72,71,73, 73,73,72, 71,69,73, 73,72,73, 72,71,68, 75,74,72,
-                   74,74,75, 67,69,66, 72,69,70, 70,71,70, 70,72,73, 69,68,68, 68,69,64, 71,69,69, 83,90,84, 79,85,89, 88,85,84, 87,84,80,
-                   83,87,86, 84,88,84, 80,86,82, 87,79,81, 84,87,88, 85,88,91, 88,86,86, 83,85,90};
+                   74,74,75, 67,69,66, 72,69,70, 70,71,70, 70,72,73, 69,68,68, 68,69,64, 71,69,69, 85,82,85, 81,81,87, 83,86,82, 86,86,83,
+                   82,85,83, 85,84,83, 75,76,77, 73,73,73, 70,71,79, 80,75,85, 80,82,86, 68,60,65, 71,73,76, 71,72,74, 69,72,73, 76,78,75,
+                   69,72,74, 76,84,82, 72,77,77, 77,77,76, 76,76,72, 77,77,77, 76,78,79, 76,76,77, 72,75,63, 68,64,68, 71,67,70, 81,82,82,
+                   78,75,84, 77,79,80, 77,80,78, 76,76,76};
 
       // Mostrando times existentes
       cout << endl << "Escolha quais times utilizar por seus respectivos numeros:" << endl << endl
@@ -136,12 +141,17 @@ int main(int argc, char const *argv[]) {
       cout << "|   Botafogo(6) | Fluminense(7) | Cruzeiro(8) | Sao Paulo(9) | Atl Mineiro(10)   |" << endl;
       cout << "|  Atl Paranaense(11) | Santos(12) | Gremio(13) | Vitoria(14) | Ponte Preta(15)  |" << endl;
       cout << "|   Coritiba(16) | Sport(17) | Avai(18) | Atl Goianeense(19) | Chapecoense(20)   |" << endl;
+      cout << "|                                                                                |" << endl;
       cout << "|      Brasil(21) | Argentina(22) | Alemanha(23) | Espanha(24) | Franca(25)      |" << endl;
-      cout << "|    Belgica(26) | Holanda(27) | Italia(28) | Barcelona(29) | Real Madrid(30)    |" << endl;
-      cout << "|                              Bayern(31) | PSG(32)                              |" << endl;
+      cout << "|    Belgica(26) | Russia(27) | Arabia Saudita(28) | Egito(29) | Uruguai(30)     |" << endl;
+      cout << "|        Portugal(31) | Marrocos(32) | Ira(33) | Australia(34) | Peru(35)        |" << endl;
+      cout << "|      Dinamarca(36) | Islandia(37) | Croacia(38) | Nigeria(39) | Suica(40)      |" << endl;
+      cout << "|   Costa Rica(41) | Servia(42) | Mexico(43) | Suecia(44) | Coreia do Sul(45)    |" << endl;
+      cout << "|     Panama(46) | Tunisia(47) | Inglaterra(48) | Polonia(49) | Colombia(50)     |" << endl;
+      cout << "|                           Senegal(51) | Japao(52)                              |" << endl;
       cout << "----------------------------------------------------------------------------------" << endl << endl;
 
-      limite = 32;
+      limite = 52;
 
       // Interacao com o usuario para definicao de times
       int num1,num2;
@@ -190,10 +200,10 @@ int main(int argc, char const *argv[]) {
       penaltiB = false;
 
       // Gerador de valores para definicao de gols
-      for(int a1=0; a1<10; a1++) atkA = (rand()*(time(0)/10000))%100;
-      for(int a2=0; a2<10; a2++) defA = (rand()*(time(0)/10000))%100;
-      for(int a3=0; a3<10; a3++) atkB = (rand()*(time(0)/10000))%100;
-      for(int a4=0; a4<10; a4++) defB = (rand()*(time(0)/10000))%100;
+      atkA = rand()%100; if(_DEBUG) cout << "Aos " << i << " minutos -" << "atkA - " << atkA << endl;
+      defA = rand()%100; if(_DEBUG) cout << "Aos " << i << " minutos -" << "defA - " << defA << endl;
+      atkB = rand()%100; if(_DEBUG) cout << "Aos " << i << " minutos -" << "atkB - " << atkB << endl;
+      defB = rand()%100; if(_DEBUG) cout << "Aos " << i << " minutos -" << "defB - " << defB << endl << endl;
 
       // Torcedor invade campo
       torc = rand()%900;
@@ -274,9 +284,11 @@ int main(int argc, char const *argv[]) {
       if(possivelgolfaltaA) { atkA-=10; defB+=15; atkB+=15; defA-=10; }
       if(possivelgolfaltaB) { atkB-=10; defA+=15; atkA+=15; defB-=10; }
 
+      int random = rand()%10; if(_DEBUG) cout << "random " << random << endl;
+
       // Condicoes para time A fazer gol
       if((cond_atk(ma,aa,atkA) && cond_def(db,mb,defB) && (!cond_atk(mb,ab,atkB) || !cond_def(da,ma,defA))
-                                                       && atkA > 0 && atkB > 0 && defA > 0 && defB > 0) || (penaltiA && rand()%5)) {
+                                  && random == 0 && atkA > 0 && atkB > 0 && defA > 0 && defB > 0) || (penaltiA && rand()%5)) {
         delay = 1;
         int type = rand()%18+3;
         if(possivelgolfaltaA) { type = 0; possivelgolfaltaA = false; }
@@ -289,7 +301,7 @@ int main(int argc, char const *argv[]) {
 
       // Condicoes para time B fazer gol
       if((cond_atk(mb,ab,atkB) && cond_def(da,ma,defA) && (!cond_atk(ma,aa,atkA) || !cond_def(db,mb,defB))
-                                                       && atkA > 0 && atkB > 0 && defA > 0 && defB > 0) || (penaltiB && rand()%5)) {
+                                       && random == 0 && atkA > 0 && atkB > 0 && defA > 0 && defB > 0) || (penaltiB && rand()%5)) {
         delay = 1;
         int type = rand()%20+3;
         if(possivelgolfaltaB) { type = 0; possivelgolfaltaB = false; }
